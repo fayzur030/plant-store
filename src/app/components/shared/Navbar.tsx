@@ -5,6 +5,7 @@ import logo from '@/assets/plantfyLogo-removebg-preview.png'
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -14,11 +15,11 @@ const navItems = [
 ]
 
 const Navbar = () => {
-  // console.log(cart)
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
-    <nav className='border-b border-gray-100 bg-white sticky top-0 z-50'>
+    <nav className='border-b border-gray-100 bg-[#f0fdf4] sticky top-0 z-50'>
       <div className='relative mx-auto flex max-w-7xl items-center justify-between px-5 py-4'>
         {/* Logo + Nav Items */}
         <div className='flex items-center gap-8'>
@@ -31,15 +32,18 @@ const Navbar = () => {
 
           {/* Nav Items */}
           <div className='hidden items-center gap-6 md:absolute md:left-1/2 md:flex md:-translate-x-1/2'>
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className='text-sm font-medium text-[#374151] transition hover:text-[#166534]'
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = pathname === item.href
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-sm md:text-base font-medium ${active ? ' text-green-500 ' : 'text-[#374151]'} transition  `}
+                >
+                  {item.name}
+                </Link>
+              )
+            })}
           </div>
         </div>
 
