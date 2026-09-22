@@ -18,7 +18,7 @@ interface PlantCardProps {
 const PlantCard = ({ plant }: PlantCardProps) => {
   return (
     <div>
-      <Card className='relative mx-auto w-full max-w-sm pt-0'>
+      <Card className='relative mx-auto w-full max-w-md pt-0 hover:shadow-lg transform duration-300'>
         <div />
         <Image
           src={plant.image}
@@ -26,22 +26,22 @@ const PlantCard = ({ plant }: PlantCardProps) => {
           className='relative z-20 aspect-video w-full object-cover'
           width={400}
           height={300}
+          unoptimized
         />
         <CardHeader>
           <CardAction>
             <Badge variant='secondary'>$ {plant.price}</Badge>
           </CardAction>
           <CardTitle>{plant.name}</CardTitle>
-          {/* <CardDescription>
-            A practical talk on component APIs, accessibility, and shipping
-            faster.
-          </CardDescription> */}
+          <CardDescription>{plant.description}</CardDescription>
         </CardHeader>
         <CardFooter className='flex items-center justify-between gap-4'>
-          <Button className='bg-[#006543] hover:bg-green-900 cursor-pointer w-1/2'>
+          <Button className='bg-[#006543] hover:bg-green-900 cursor-pointer'>
             Add to cart
           </Button>
-          <Button className='w-1/2'>View Details</Button>
+          <Button className=' bg-[#76C457] text-black hover:bg-green-700 cursor-pointer'>
+            View Details
+          </Button>
         </CardFooter>
       </Card>
     </div>

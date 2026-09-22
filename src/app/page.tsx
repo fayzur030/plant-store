@@ -1,15 +1,13 @@
-import getPlants from '@/services/getPlants'
-import Banner from './components/home/Banner'
 import { Suspense } from 'react'
-import PlantsData from './components/home/plants/PlantsData '
+import PlantsData from './components/home/plants/PlantsData'
+import Loading from './loading'
 
-const Home = async () => {
-  const fetchPlants = await getPlants()
+const Home = () => {
   return (
     <div>
-      <Banner />
-      <Suspense>
-        <PlantsData plants={fetchPlants} />
+      {/* <Banner /> */}
+      <Suspense fallback={<Loading />}>
+        <PlantsData />
       </Suspense>
     </div>
   )
