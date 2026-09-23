@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/card'
 import { IPlants } from '@/types/Plants.type'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface PlantCardProps {
   plant: IPlants
@@ -39,9 +40,11 @@ const PlantCard = ({ plant }: PlantCardProps) => {
           <Button className='bg-[#006543] hover:bg-green-900 cursor-pointer'>
             Add to cart
           </Button>
-          <Button className=' bg-[#76C457] text-black hover:bg-green-700 cursor-pointer'>
-            View Details
-          </Button>
+          <Link href={`/plants/${plant.id}`}>
+            <Button className=' bg-[#76C457] text-white hover:bg-green-700 cursor-pointer'>
+              View Details
+            </Button>
+          </Link>
         </CardFooter>
       </Card>
     </div>

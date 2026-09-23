@@ -14,3 +14,14 @@ const getPlants = async (): Promise<IPlants[]> => {
 }
 
 export default getPlants
+
+// getPlantsById
+
+export const getPlantById = async (id: string) => {
+  const response = await fetch(`${BASE_URL}`)
+  if (!response.ok) {
+    throw new Error(`Failed to fetch plants details`)
+  }
+  const plants = await response.json()
+  return plants.find((item: IPlants) => Number(item.id) === Number(id))
+}
